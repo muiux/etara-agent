@@ -1,0 +1,153 @@
+import { Restaurant } from "../types";
+
+export const RESTAURANTS: Restaurant[] = [
+  {
+    id: "r_001",
+    name: "Hoshi Omakase",
+    cuisine: "Japanese",
+    rating: 4.8,
+    ambianceRating: 4.9,
+    pricePerPersonAed: 450,
+    allergens: ["fish", "shellfish", "soy", "sesame"],
+    distanceKm: {
+      Deira: 8.2,
+      Marina: 3.1,
+      Downtown: 5.5,
+      JBR: 2.8,
+    },
+    openingHours: {
+      monday: [{ open: "12:00", close: "15:00" }, { open: "18:00", close: "23:00" }],
+      tuesday: [{ open: "12:00", close: "15:00" }, { open: "18:00", close: "23:00" }],
+      wednesday: [{ open: "12:00", close: "15:00" }, { open: "18:00", close: "23:00" }],
+      thursday: [{ open: "12:00", close: "15:00" }, { open: "18:00", close: "23:30" }],
+      friday: [{ open: "13:00", close: "16:00" }, { open: "19:00", close: "00:00" }],
+      saturday: [{ open: "13:00", close: "16:00" }, { open: "19:00", close: "00:00" }],
+      sunday: [{ open: "13:00", close: "16:00" }, { open: "18:00", close: "22:30" }],
+    },
+  },
+  {
+    id: "r_002",
+    name: "Zuma Dubai",
+    cuisine: "Japanese Izakaya",
+    rating: 4.6,
+    ambianceRating: 4.7,
+    pricePerPersonAed: 320,
+    allergens: ["fish", "shellfish", "soy", "gluten"],
+    distanceKm: {
+      Deira: 11.4,
+      Marina: 6.8,
+      Downtown: 2.1,
+      JBR: 7.5,
+    },
+    openingHours: {
+      monday: [{ open: "12:00", close: "01:00" }],
+      tuesday: [{ open: "12:00", close: "01:00" }],
+      wednesday: [{ open: "12:00", close: "01:00" }],
+      thursday: [{ open: "12:00", close: "02:00" }],
+      friday: [{ open: "12:00", close: "02:00" }],
+      saturday: [{ open: "12:00", close: "02:00" }],
+      sunday: [{ open: "12:00", close: "01:00" }],
+    },
+  },
+  {
+    id: "r_003",
+    name: "Trattoria Lucia",
+    cuisine: "Italian",
+    rating: 4.4,
+    ambianceRating: 4.5,
+    pricePerPersonAed: 180,
+    allergens: ["gluten", "dairy", "eggs"],
+    distanceKm: {
+      Deira: 32.1,   // ← triggers RULE_03 from Deira
+      Marina: 4.2,
+      Downtown: 9.8,
+      JBR: 3.9,
+    },
+    openingHours: {
+      monday: [{ open: "12:00", close: "23:00" }],
+      tuesday: [{ open: "12:00", close: "23:00" }],
+      wednesday: [{ open: "12:00", close: "23:00" }],
+      thursday: [{ open: "12:00", close: "23:30" }],
+      friday: [{ open: "12:00", close: "00:00" }],
+      saturday: [{ open: "12:00", close: "00:00" }],
+      sunday: [{ open: "12:00", close: "23:00" }],
+    },
+  },
+  {
+    id: "r_004",
+    name: "Al Fanar Restaurant",
+    cuisine: "Emirati",
+    rating: 4.5,
+    ambianceRating: 4.6,
+    pricePerPersonAed: 120,
+    allergens: ["nuts", "sesame", "dairy"],  // ← triggers RULE_04 for nut allergy
+    distanceKm: {
+      Deira: 4.5,
+      Marina: 18.3,
+      Downtown: 7.2,
+      JBR: 19.1,
+    },
+    openingHours: {
+      monday: [{ open: "09:00", close: "23:00" }],
+      tuesday: [{ open: "09:00", close: "23:00" }],
+      wednesday: [{ open: "09:00", close: "23:00" }],
+      thursday: [{ open: "09:00", close: "00:00" }],
+      friday: [{ open: "09:00", close: "00:00" }],
+      saturday: [{ open: "09:00", close: "00:00" }],
+      sunday: [{ open: "09:00", close: "23:00" }],
+    },
+  },
+  {
+    id: "r_005",
+    name: "Nobu Dubai",
+    cuisine: "Japanese Peruvian",
+    rating: 4.7,
+    ambianceRating: 4.8,
+    pricePerPersonAed: 380,
+    allergens: ["fish", "shellfish", "soy"],
+    distanceKm: {
+      Deira: 14.2,
+      Marina: 1.5,
+      Downtown: 7.8,
+      JBR: 0.8,
+    },
+    openingHours: {
+      monday: [{ open: "19:00", close: "23:30" }],
+      tuesday: [{ open: "19:00", close: "23:30" }],
+      wednesday: [{ open: "19:00", close: "23:30" }],
+      thursday: [{ open: "19:00", close: "00:00" }],
+      friday: [{ open: "13:00", close: "16:00" }, { open: "19:00", close: "00:00" }],
+      saturday: [{ open: "13:00", close: "16:00" }, { open: "19:00", close: "00:00" }],
+      sunday: [{ open: "13:00", close: "16:00" }, { open: "19:00", close: "23:00" }],
+    },
+  },
+  {
+    id: "r_006",
+    name: "Casa Lupo",
+    cuisine: "Italian",
+    rating: 4.3,
+    ambianceRating: 4.1,
+    pricePerPersonAed: 200,
+    allergens: ["gluten", "dairy", "eggs", "nuts"],
+    distanceKm: {
+      Deira: 9.7,
+      Marina: 5.6,
+      Downtown: 3.4,
+      JBR: 6.2,
+    },
+    openingHours: {
+      // Only open 12:00–22:00 — closed at 04:00 ← triggers RULE_01
+      monday: [{ open: "12:00", close: "22:00" }],
+      tuesday: [{ open: "12:00", close: "22:00" }],
+      wednesday: [{ open: "12:00", close: "22:00" }],
+      thursday: [{ open: "12:00", close: "22:30" }],
+      friday: [{ open: "12:00", close: "23:00" }],
+      saturday: [{ open: "12:00", close: "23:00" }],
+      sunday: [{ open: "12:00", close: "22:00" }],
+    },
+  },
+];
+
+export const RESTAURANT_MAP: Record<string, Restaurant> = Object.fromEntries(
+  RESTAURANTS.map((r) => [r.id, r])
+);
